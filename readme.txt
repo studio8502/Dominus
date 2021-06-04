@@ -25,9 +25,10 @@ Installation:
 	   when your autoexec.bat/fdauto.bat file is executed; for example,
 	   you could place it in c:\dos\dominus.cpi.
 	
-	2. Modify your config.sys/fdconfig.sys file, placing a line similar
+	2. Modify your config.sys/fdconfig.sys file, placing lines similar
 	   to the following somewhere in it:
-
+			
+			COUNTRY=001,437; C:\DOS\COUNTRY.SYS
 	   		DEVICE=C:\DOS\DISPLAY.SYS CON=(EGA,437,2)
 	
 		2.1. The above line should replace "437" with your codepage of
@@ -37,6 +38,7 @@ Installation:
 	   similar to the following somewhere in it:
 
 	   		MODE CON CODEPAGE PREPARE=((437) C:\DOS\DOMINUS.CPI)
+			CHCP 437
 			MODE CON CODEPAGE SELECT=437
 	
 		3.1. Again, replace "437" with your preferred codepage, as in
