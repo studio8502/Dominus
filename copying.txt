@@ -1,9 +1,6 @@
 Copyright (C) 2020 Dimitar Toshkov Zhekov,
 with Reserved Font Name "Terminus Font".
 
-Copyright (C) 2021 Kyle Cardoza,
-with Reseved Font Name "Dominus Font".
-
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:
 http://scripts.sil.org/OFL
