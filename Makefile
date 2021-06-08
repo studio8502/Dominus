@@ -1,21 +1,39 @@
-
-FONTS	:= d14cp437.psf \
+FONTS	:= d08cp437.psf \
+		   d08cp850.psf \
+		   d12cp437.psf \
+		   d12cp850.psf \
+		   d14cp437.psf \
 		   d14cp850.psf \
-		   d14cp858.psf \
 		   d16cp437.psf \
-		   d16cp850.psf \
-		   d16cp858.psf
+		   d16cp850.psf
 
-all: dominus.cpi
+all: dom437.cpi dom850.cpi
 
-dominus.cpi: $(FONTS)
-	psfs2cpi +437 d14cp437.psf \
-				  d16cp437.psf \
-			 +850 d14cp850.psf \
-			      d16cp850.psf \
-			 +858 d14cp858.psf \
-			      d16cp858.psf \
-			  $@
+dom437.cpi: $(FONTS)
+	psfs2cpi +437 d08cp437.psf \
+				  d12cp437.psf \
+			      d14cp437.psf \
+			      d16cp437.psf \
+			 $@
+
+dom850.cpi: $(FONTS)
+	psfs2cpi +850 d08cp850.psf \
+			      d12cp850.psf \
+			 	  d14cp850.psf \
+			 	  d16cp850.psf \
+			 $@
+
+d08cp437.psf: d08cp437.fnt
+	raw2psf $< $@ --height=8 --width=8 --codepage=437
+
+d08cp850.psf: d08cp850.fnt
+	raw2psf $< $@ --height=8 --width=8 --codepage=850
+
+d12cp437.psf: d12cp437.fnt
+	raw2psf $< $@ --height=12 --width=8 --codepage=437
+
+d12cp850.psf: d12cp850.fnt
+	raw2psf $< $@ --height=12 --width=8 --codepage=850
 
 d14cp437.psf: d14cp437.fnt
 	raw2psf $< $@ --height=14 --width=8 --codepage=437
@@ -23,20 +41,13 @@ d14cp437.psf: d14cp437.fnt
 d14cp850.psf: d14cp850.fnt
 	raw2psf $< $@ --height=14 --width=8 --codepage=850
 
-d14cp858.psf: d14cp858.fnt
-	raw2psf $< $@ --height=14 --width=8 --codepage=858
-
 d16cp437.psf: d16cp437.fnt
 	raw2psf $< $@ --height=16 --width=8 --codepage=437
 
 d16cp850.psf: d16cp850.fnt
 	raw2psf $< $@ --height=16 --width=8 --codepage=850
 
-d16cp858.psf: d16cp858.fnt
-	raw2psf $< $@ --height=16 --width=8 --codepage=858
-
 clean:
-	del *.psf
-	del *.cpi
+	rm -f *.psf *.cpi
 
 .SUFFIXES:

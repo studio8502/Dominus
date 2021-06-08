@@ -1,7 +1,8 @@
 Dominus is a DOS-compatible screen font (.cpi format) which is based on
 the Terminus console font commonly used on Linux and the BSDs. It has
 been redrawn by hand, not merely converted. Currently, it covers
-codepages 437, 850, and 858, in sizes 14 and 16.
+codepages 437 and 850 (as modified by IBM, inserting the Euro sign at
+index 0xD5 in place of the dotless i), in pixel sizes 8, 14 and 16.
 
 As with Terminus, Dominus is released under the SIL Open Font License,
 version 1.1. See the file "COPYING.TXT", included with this archive,
@@ -21,34 +22,29 @@ do with its creation.
 
 Installation:
 
-	1. Place the file "dominus.cpi" in a directory which is accessible
-	   when your autoexec.bat/fdauto.bat file is executed; for example,
-	   you could place it in c:\dos\dominus.cpi.
+	1. Place the file "domXXX.cpi" (where XXX is your codepage of choice)
+	   in a directory which is accessible when your autoexec.bat/fdauto.bat
+	   file is executed; for example, you could place it in c:\dos\dominus.cpi.
 	
-	2. Modify your config.sys/fdconfig.sys file, placing lines similar
-	   to the following somewhere in it:
-			
-			COUNTRY=001,437; C:\DOS\COUNTRY.SYS
-	   		DEVICE=C:\DOS\DISPLAY.SYS CON=(EGA,437,2)
-	
-		2.1. The above line should replace "437" with your codepage of
-		     choice, from among those supported by Dominus.
+	2. Modify your config.sys/fdconfig.sys file, placing a line similar
+	   to the following somewhere in it to load display.sys with the
+	   hardware codepage of 437:
+
+	   		device=c:\dos\display.sys CON=(EGA,437,2)
 	
 	3. Modify your autoexec.bat/fdauto.bat file, placing a pair of lines
 	   similar to the following somewhere in it:
 
-	   		MODE CON CODEPAGE PREPARE=((437) C:\DOS\DOMINUS.CPI)
-			CHCP 437
-			MODE CON CODEPAGE SELECT=437
+			mode con codepage prepare=((XXX) c:\dos\domXXX.cpi)
+			chcp XXX
+			mode con codepage select=XXX
 	
-		3.1. Again, replace "437" with your preferred codepage, as in
-		     config.sys/fdconfig.sys.
+		3.1. Replace "XXX" above with your codepage.
 
 	4. Reboot. You should now be using Dominus as your system font, in
 	   16-pixel size, for 25 lines. You may use your utility of choice
-	   (I use TMODE) to set another line count from among those supported
-	   by Dominus (at the time of this writing, only 14px (28 lines) is
-	   supported beyond the default 25 lines).
+	   (I use TM.COM) to set another line count from among those supported
+	   by Dominus.
 
 Notice:
 
